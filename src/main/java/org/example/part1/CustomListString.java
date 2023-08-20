@@ -1,6 +1,6 @@
 package org.example.part1;
 
-public interface StringList {
+public interface CustomListString {
 
     // Добавление элемента.
     // Вернуть добавленный элемент
@@ -60,7 +60,7 @@ public interface StringList {
     // Сравнить текущий список с другим.
     // Вернуть true/false или исключение,
     // если передан null.
-    boolean equals(StringList otherList);
+    boolean equals(CustomListString otherList);
 
     // Вернуть фактическое количество элементов.
     int size();

@@ -3,9 +3,8 @@ package org.example.part1;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 
-public class StringListImpl implements StringList {
+public class StringListImpl implements CustomListString {
 
     private String[] values;
 
@@ -93,7 +92,7 @@ public class StringListImpl implements StringList {
     }
 
     @Override
-    public boolean equals(StringList otherList) {
+    public boolean equals(CustomListString otherList) {
         if (otherList == null) throw new NullPointerException();
 
         if (this == otherList) return true;
