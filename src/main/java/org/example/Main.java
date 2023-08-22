@@ -7,19 +7,25 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Integer[] arrBubble = new Integer[100_000];
-        fillArray(arrBubble);
-        Integer[] arrSelection = Arrays.copyOf(arrBubble, arrBubble.length);
-        Integer[] arrInsertion = Arrays.copyOf(arrBubble, arrBubble.length);
-        long start = System.currentTimeMillis();
-        sortBubble(arrBubble);
-        System.out.println(System.currentTimeMillis() - start);
-        start = System.currentTimeMillis();
-        sortSelection(arrSelection);
-        System.out.println(System.currentTimeMillis() - start);
-        start = System.currentTimeMillis();
-        sortInsertion(arrInsertion);
-        System.out.println(System.currentTimeMillis() - start);
+//        Integer[] arrBubble = new Integer[100_000];
+//        fillArray(arrBubble);
+//        Integer[] arrSelection = Arrays.copyOf(arrBubble, arrBubble.length);
+//        Integer[] arrInsertion = Arrays.copyOf(arrBubble, arrBubble.length);
+//        long start = System.currentTimeMillis();
+//        sortBubble(arrBubble);
+//        System.out.println(System.currentTimeMillis() - start);
+//        start = System.currentTimeMillis();
+//        sortSelection(arrSelection);
+//        System.out.println(System.currentTimeMillis() - start);
+//        start = System.currentTimeMillis();
+//        sortInsertion(arrInsertion);
+//        System.out.println(System.currentTimeMillis() - start);
+        var arr = new Integer[40];
+        fillArray(arr);
+        var asd = new IntegerListImpl(arr);
+        System.out.println(Arrays.toString(asd.toArray()));
+        asd.contains(1);
+        System.out.println(Arrays.toString(asd.toArray()));
     }
 
     private static void sortBubble(Integer[] arr) {
@@ -65,7 +71,7 @@ public class Main {
     private static void fillArray(Integer[] arr) {
         var rng = new Random();
         for (int i = 0; i < arr.length; ++i) {
-            arr[i] = rng.nextInt();
+            arr[i] = rng.nextInt(10);
         }
     }
 }

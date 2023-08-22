@@ -133,7 +133,7 @@ public class IntegerListImpl implements CustomListInteger {
         return Arrays.copyOf(values, size);
     }
 
-    public void sort() {
+    private void sort() {
         for (int i = 0; i < size; i++) {
             int minElementIndex = i;
             for (int j = i + 1; j < size; j++) {
@@ -150,6 +150,42 @@ public class IntegerListImpl implements CustomListInteger {
         isSorted = true;
     }
 
+    public void quickSort(Integer[] arr, int start, int end) {
+        if (start < end) {
+            int partitionIndex = partition(this.values, start, end);
+
+            quickSort(arr, start, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, end);
+        }
+    }
+
+    private static int partition(Integer[] arr, int begin, int end) {
+        int pivot = arr[end];
+        int i = (begin - 1);
+
+        for (int j = begin; j < end; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+
+                if (!arr[i].equals(arr[j])){
+                        arr[i] = arr[i] ^ arr[j];
+                        arr[j] = arr[i] ^ arr[j];
+                        arr[i] = arr[i] ^ arr[j];
+                }
+
+                //swapElements(arr, i, j);
+            }
+        }
+
+        if (!arr[i+1].equals(arr[end])){
+            arr[i+1] = arr[i+1] ^ arr[end];
+            arr[end] = arr[i+1] ^ arr[end];
+            arr[i+1] = arr[i+1] ^ arr[end];
+        }
+        //swapElements(arr, i + 1, end);
+        return i + 1;
+    }
+
     private void checkItem(Integer item) {
         if (item == null) throw new NullPointerException();
     }
@@ -160,7 +196,7 @@ public class IntegerListImpl implements CustomListInteger {
 
     private int search(Integer item) {
         if (!isSorted) {
-            this.sort();
+            this.quickSort(this.values, 0, size-1);
         }
         int min = 0;
         int max = size - 1;
@@ -187,7 +223,7 @@ public class IntegerListImpl implements CustomListInteger {
 
     private int searchReverse(Integer item) {
         if (!isSorted) {
-            this.sort();
+            this.quickSort(this.values, 0, size-1);
         }
         int min = 0;
         int max = size - 1;
